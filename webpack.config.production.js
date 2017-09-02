@@ -9,6 +9,7 @@ module.exports = (moduleExport) => {
         // This has effect on the react lib size
         NODE_ENV: JSON.stringify('production'),
         PROD_ENV: JSON.stringify('1'),
+        API_ADDRESS: JSON.stringify(process.env.API_ADDRESS),
       },
     }),
     new webpack.optimize.AggressiveMergingPlugin(),

@@ -7,6 +7,7 @@ services:
     environment:
       - NODE_ENV=${NODE_ENV}
       - PORT=8080
+      - API_ADDRESS=http://jsonplaceholder.typicode.com
     volumes:
       - ./:/app
     working_dir: /app
