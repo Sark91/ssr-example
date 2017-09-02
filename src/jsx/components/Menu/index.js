@@ -27,7 +27,7 @@ const Menu = ({ items, location, history: { push } }) => (
 Menu.propTypes = {
   items: PropTypes.arrayOf(PropTypes.shape({
     path: PropTypes.string.isRequired,
-    component: PropTypes.any.isRequired, // @fixme: verify proptype for element class
+    component: PropTypes.func.isRequired,
     title: PropTypes.string.isRequired,
   })),
   location: PropTypes.shape({
