@@ -4,14 +4,16 @@ import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
 import { Container, Row, Col } from 'reactstrap';
 import Menu from 'jsx/components/Menu';
+import Content from 'jsx/components/Content';
+
 import './style.scss';
 
 const routes = [
-  { title: 'SSR Example', path: '/', component: () => null, hideInMenu: true },
-  { title: 'Posts', path: '/posts/:id', component: () => null },
-  { title: 'Albums', path: '/albums', component: () => <span>two</span> },
-  { title: 'Todos', path: '/todos', component: () => <span>two</span> },
-  { title: '404 - Not Found', path: '*', component: () => <span>xD</span>, hideInMenu: true },
+  { title: 'Home', exact: true, path: '/', component: () => <p>Home</p> },
+  { title: 'Posts', path: '/posts', component: () => <p>Posts</p> },
+  { title: 'Albums', path: '/albums', component: () => <span>Albums</span> },
+  { title: 'Todos', path: '/todos', component: () => <span>Todos</span> },
+  { title: '404 - Not Found', path: '*', component: () => <span>404</span>, hideInMenu: true },
 ];
 
 const App = () => (
@@ -22,6 +24,9 @@ const App = () => (
           <Row>
             <Col sm="3">
               <Menu items={routes} />
+            </Col>
+            <Col sm="9">
+              <Content routes={routes} />
             </Col>
           </Row>
         </Container>
