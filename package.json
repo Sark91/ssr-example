@@ -1,5 +1,5 @@
 {
-  "name": "earth-wars-web",
+  "name": "ssr-example",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -31,7 +31,8 @@
     "react-router-redux": "^5.0.0-alpha.6",
     "reactstrap": "^4.8.0",
     "redux": "^3.7.2",
-    "webpack": "^3.5.5"
+    "webpack": "^3.5.5",
+    "whatwg-fetch": "^2.0.3"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

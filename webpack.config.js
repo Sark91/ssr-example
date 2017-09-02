@@ -9,6 +9,7 @@ const excludeFile = /node_modules/;
 let moduleExport = {
   entry: [
     'babel-polyfill',
+    'whatwg-fetch',
   ],
   output: {
     filename: '[name].bundle.js',
