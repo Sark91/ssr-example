@@ -1,21 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { ListGroup, ListGroupItem } from 'reactstrap';
+import { withRouter } from 'react-router';
 
 const Menu = ({ items }) => (
-  <ListGroup className="menu">
-    {items.map(item => (
-      <ListGroupItem
-        key={item.path}
-        active
-        tag="a"
-        href={item.path}
-        action
-      >
-        {item.title}
-      </ListGroupItem>
-    ))}
-  </ListGroup>
+  <div>
+    <ListGroup className="menu">
+      {items
+        .filter(item => !item.hideInMenu)
+        .map(item => (
+          <ListGroupItem
+            key={item.path}
+            active
+            tag="a"
+            href={item.path}
+            action
+          >
+            {item.title}
+          </ListGroupItem>
+        ))
+      }
+    </ListGroup>
+  </div>
 );
 
 Menu.propTypes = {
@@ -34,4 +40,4 @@ export {
   Menu,
 };
 
-export default Menu;
+export default withRouter(Menu);
