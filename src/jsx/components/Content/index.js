@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Switch, Route, withRouter } from 'react-router';
-import Title from 'react-title-component';
+import Title from 'jsx/components/Content/Title';
 
 const getActiveTitle = (routes, { pathname }) => {
   const found = routes.find(route => route.path === pathname);
@@ -15,7 +15,7 @@ const getActiveTitle = (routes, { pathname }) => {
 
 const Content = ({ routes, location }) => (
   <div className="content">
-    <Title render={getActiveTitle(routes, location)} />
+    <Title text={getActiveTitle(routes, location)} />
 
     <Switch>
       {routes.map(route => (
