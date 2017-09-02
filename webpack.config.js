@@ -24,6 +24,7 @@ let moduleExport = {
     ],
   },
   resolve: {
+    modules: [ process.env.NODE_PATH || 'node_modules', 'node_modules' ],
     extensions: ['.js', '.json', '.html'],
   },
   plugins: [],
