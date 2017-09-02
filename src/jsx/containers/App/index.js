@@ -7,8 +7,11 @@ import Menu from 'jsx/components/Menu';
 import './style.scss';
 
 const routes = [
-  { title: 'One', path: '/one', component: () => null },
-  { title: 'Two', path: '/two', component: () => <span>two</span> },
+  { title: 'SSR Example', path: '/', component: () => null, hideInMenu: true },
+  { title: 'Posts', path: '/posts/:id', component: () => null },
+  { title: 'Albums', path: '/albums', component: () => <span>two</span> },
+  { title: 'Todos', path: '/todos', component: () => <span>two</span> },
+  { title: '404 - Not Found', path: '*', component: () => <span>xD</span>, hideInMenu: true },
 ];
 
 const App = () => (
