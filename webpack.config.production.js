@@ -3,7 +3,7 @@ module.exports = (moduleExport) => {
 
   delete moduleExport.devtool;
 
-  moduleExport.plugins = [
+  moduleExport.plugins.push(
     new webpack.DefinePlugin({
       'process.env': {
         // This has effect on the react lib size
@@ -26,7 +26,7 @@ module.exports = (moduleExport) => {
         comments: false,
       },
     }),
-  ];
+  );
 
   return moduleExport;
 };

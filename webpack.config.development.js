@@ -5,7 +5,7 @@ module.exports = (moduleExport) => {
 
   moduleExport.entry.push('webpack-hot-middleware/client');
 
-  moduleExport.plugins = [
+  moduleExport.plugins.push(
     new webpack.DefinePlugin({
       'process.env': {
         // This has effect on the react lib size
@@ -14,7 +14,7 @@ module.exports = (moduleExport) => {
       },
     }),
     new webpack.HotModuleReplacementPlugin(),
-  ];
+  );
 
   return moduleExport;
 };

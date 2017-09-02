@@ -1,6 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 const webpackModifier = require(`./webpack.config.${process.env.NODE_ENV || 'production'}`);
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const includeFileExtension = /\.jsx?$/;
 const excludeFile = /node_modules/;
@@ -17,6 +18,14 @@ let moduleExport = {
   module: {
     rules: [
       {
+        test: /\.s?css$/,
+        use: ExtractTextPlugin.extract({
+          use: ['css-loader', 'sass-loader'],
+          fallback: 'style-loader',
+        }),
+        exclude: excludeFile,
+      },
+      {
         test: includeFileExtension,
         use: ['babel-loader'],
         exclude: excludeFile,
@@ -25,15 +34,22 @@ let moduleExport = {
   },
   resolve: {
     modules: [ process.env.NODE_PATH || 'node_modules', 'node_modules' ],
-    extensions: ['.js', '.json', '.html'],
+    extensions: ['.js', '.json', '.html', '.scss', '.css'],
   },
-  plugins: [],
+  plugins: [
+    new ExtractTextPlugin({
+      filename: 'style.css',
+      disable: process.env.NODE_ENV === 'development',
+    }),
+  ],
 };
 
 moduleExport = webpackModifier(moduleExport);
 
 moduleExport.entry.push('./src/index.js');
 
-moduleExport.plugins.push(new HtmlWebpackPlugin({ template: './src/assets/index.html' }));
+moduleExport.plugins.push(
+  new HtmlWebpackPlugin({ template: './src/assets/index.html' }),
+);
 
 module.exports = moduleExport;
