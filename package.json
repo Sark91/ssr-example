@@ -19,6 +19,7 @@
     "bootstrap": "^4.0.0-alpha.6",
     "express": "^4.15.4",
     "history": "^4.7.2",
+    "object-path-immutable": "^0.5.1",
     "prop-types": "^15.5.10",
     "querystring": "^0.2.0",
     "react": "^15.6.1",
@@ -31,6 +32,7 @@
     "react-router-redux": "^5.0.0-alpha.6",
     "reactstrap": "^4.8.0",
     "redux": "^3.7.2",
+    "redux-thunk": "^2.2.0",
     "webpack": "^3.5.5",
     "whatwg-fetch": "^2.0.3"
   },

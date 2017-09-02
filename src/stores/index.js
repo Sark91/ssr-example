@@ -5,6 +5,8 @@ import createBrowserHistory from 'history/createBrowserHistory';
 import clientMiddleware from 'stores/middlewares/clientMiddleware';
 import request from 'services/request';
 
+import thunk from 'redux-thunk';
+
 // eslint-disable-next-line no-underscore-dangle
 const reduxCompose = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const history = createBrowserHistory();
@@ -15,6 +17,7 @@ export default createStore(
   }),
   reduxCompose(
     applyMiddleware(
+      thunk,
       clientMiddleware(request),
       routerMiddleware(history),
     ),
