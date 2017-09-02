@@ -1,0 +1,15 @@
+version: "2"
+services:
+  webapp:
+    container_name: webapp
+    image: node:8.4.0
+    build: .
+    environment:
+      - NODE_ENV=${NODE_ENV}
+      - PORT=8080
+    volumes:
+      - ./:/app
+    working_dir: /app
+    ports:
+      - "8080:8080"
+    command: ["sh", "-c", "cd /app && npm install && npm run start-dev"]
