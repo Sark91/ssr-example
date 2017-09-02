@@ -1,12 +1,12 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import Menu from 'jsx/components/Menu';
+import { Menu } from 'jsx/components/Menu';
 
 describe('<Menu/> Component', () => {
-  test('It should mount properly with className="app"', () => {
+  test('It should mount properly with className="menu"', () => {
     const MenuElement = shallow(<Menu />);
 
-    expect(MenuElement.is(".menu")).toBe(true);
+    expect(MenuElement.find('.menu').length).toBe(1);
   });
 
   test('It should contains items, when prop items is not empty', () => {
@@ -22,9 +22,16 @@ describe('<Menu/> Component', () => {
     expect(MenuElement.find('.list-group-item').length).toBe(2);
   });
 
-  // test('It should contains menu', () => {
-  //   const AppElement = mount(<App />);
-  //
-  //   expect(AppElement.contains(".menu")).toBe(true);
-  // });
+  test('It should properly handle item with "hideInMenu" property', () => {
+    const MenuElement = mount(
+      <Menu
+        items={[
+          { title: 'One', path: '/', component: () => null, hideInMenu: true, },
+          { title: 'Two', path: '/index', component: () => null , hideInMenu: true,},
+        ]}
+      />
+    );
+
+    expect(MenuElement.find('.list-group-item').length).toBe(0);
+  });
 });
