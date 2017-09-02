@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import App from 'jsx/App';
+import App from 'jsx/containers/App';
 
 describe('<App/> Component', () => {
   test('It should mount properly with className="app"', () => {
