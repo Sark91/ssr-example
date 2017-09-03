@@ -7,6 +7,7 @@ import Menu from 'jsx/components/Menu';
 import Content from 'jsx/components/Content';
 
 import Posts from 'jsx/containers/Posts';
+import Albums from 'jsx/containers/Albums';
 
 import './style.scss';
 
@@ -14,7 +15,7 @@ import './style.scss';
 const routes = [
   { title: 'Home', exact: true, path: '/', component: () => <p>Home</p> },
   { title: 'Posts', path: '/posts', component: Posts },
-  { title: 'Albums', path: '/albums', component: () => <span>Albums</span> },
+  { title: 'Albums', path: '/albums', component: Albums },
   { title: 'Todos', path: '/todos', component: () => <span>Todos</span> },
   { title: '404 - Not Found', path: '*', component: () => <span>404</span>, hideInMenu: true },
 ];

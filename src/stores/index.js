@@ -8,6 +8,7 @@ import request from 'services/request';
 import thunk from 'redux-thunk';
 
 import posts from 'stores/posts/reducer';
+import albums from 'stores/albums/reducer';
 
 // eslint-disable-next-line no-underscore-dangle
 const reduxCompose = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -17,6 +18,7 @@ export default createStore(
   combineReducers({
     routing: routerReducer,
     posts,
+    albums,
   }),
   reduxCompose(
     applyMiddleware(
