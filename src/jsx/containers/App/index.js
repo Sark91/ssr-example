@@ -6,11 +6,14 @@ import { Container, Row, Col } from 'reactstrap';
 import Menu from 'jsx/components/Menu';
 import Content from 'jsx/components/Content';
 
+import Posts from 'jsx/containers/Posts';
+
 import './style.scss';
+
 
 const routes = [
   { title: 'Home', exact: true, path: '/', component: () => <p>Home</p> },
-  { title: 'Posts', path: '/posts', component: () => <p>Posts</p> },
+  { title: 'Posts', path: '/posts', component: Posts },
   { title: 'Albums', path: '/albums', component: () => <span>Albums</span> },
   { title: 'Todos', path: '/todos', component: () => <span>Todos</span> },
   { title: '404 - Not Found', path: '*', component: () => <span>404</span>, hideInMenu: true },
