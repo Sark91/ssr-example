@@ -7,34 +7,34 @@ import {
   TABLE_DATA_SET_PAGE,
 } from 'stores/table-data/actionTypes';
 
-const getData = (store, prop) => (dispatch, getState) => {
-  const data = getState()[store][prop];
+const getData = (reducer, prop) => (dispatch, getState) => {
+  const data = getState()[reducer][prop];
 
   return dispatch({
     types: [TABLE_DATA_GET_DATA, TABLE_DATA_GET_DATA_SUCCESS, TABLE_DATA_GET_DATA_ERROR],
-    payload: { store, prop },
+    payload: { reducer, prop },
     promise: client => client.get(data.endpoint, { query: data.query }),
   });
 };
 
-const refreshData = (store, prop) => () => dispatch => dispatch(getData(store, prop));
+const refreshData = (reducer, prop) => () => dispatch => dispatch(getData(reducer, prop));
 
-const setLimit = (store, prop) => _limit => (dispatch) => {
+const setLimit = (reducer, prop) => _limit => (dispatch) => {
   dispatch({
     type: TABLE_DATA_SET_LIMIT,
     payload: { _limit },
   });
 
-  return dispatch(getData(store, prop));
+  return dispatch(getData(reducer, prop));
 };
 
-const setPage = (store, prop) => _page => (dispatch) => {
+const setPage = (reducer, prop) => _page => (dispatch) => {
   dispatch({
     type: TABLE_DATA_SET_PAGE,
     payload: { _page },
   });
 
-  return dispatch(getData(store, prop));
+  return dispatch(getData(reducer, prop));
 };
 
 export {

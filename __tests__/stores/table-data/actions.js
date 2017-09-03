@@ -33,7 +33,7 @@ describe('table-data actions', () => {
     expect(dispatch.mock.calls[0][0]).toMatchObject({
       types: [TABLE_DATA_GET_DATA, TABLE_DATA_GET_DATA_SUCCESS, TABLE_DATA_GET_DATA_ERROR],
       payload: {
-        store: 'mocked',
+        reducer: 'mocked',
         prop: 'store',
       },
     });
@@ -90,7 +90,7 @@ describe('table-data actions', () => {
       expect(dispatch2.mock.calls[0][0]).toMatchObject({
         types: [TABLE_DATA_GET_DATA, TABLE_DATA_GET_DATA_SUCCESS, TABLE_DATA_GET_DATA_ERROR],
         payload: {
-          store: 'mocked',
+          reducer: 'mocked',
           prop: 'store',
         },
       });

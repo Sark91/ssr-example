@@ -36,7 +36,7 @@ const createDataState = ({ endpoint }) => ({
  * @param actionTable
  */
 const isTableDataActionType = (stateName, action) => {
-  if (!action || !action.payload || stateName !== action.payload.store) {
+  if (!action || !action.payload || stateName !== action.payload.reducer) {
     return false;
   }
 

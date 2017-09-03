@@ -22,7 +22,7 @@ describe('table-data reducer', () => {
 
   test('"isTableDataActionType" should return true on every table data action type', () => {
     for (const actionType in tableDataActionTypes) {
-      expect(isTableDataActionType('store', { type: actionType, payload: { store: 'store' } })).toBe(true);
+      expect(isTableDataActionType('store', { type: actionType, payload: { reducer: 'store' } })).toBe(true);
     }
   });
 

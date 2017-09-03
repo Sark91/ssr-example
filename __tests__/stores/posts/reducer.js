@@ -18,7 +18,7 @@ describe('posts reducer', () => {
 
       const newState = reducer(state, {
         type: actionType,
-        payload: { store: 'posts', prop: 'all' }
+        payload: { reducer: 'posts', prop: 'all' }
       });
 
       expect(state === newState).toBe(false);
