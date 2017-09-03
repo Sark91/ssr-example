@@ -72,6 +72,10 @@
   "jest": {
     "transform": {
       ".*": "<rootDir>/node_modules/jest-css-modules"
-    }
+    },
+
+    "testPathIgnorePatterns": [
+      "__tests__/stores/_mockStore.js"
+    ]
   }
 }
