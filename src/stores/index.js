@@ -7,6 +7,8 @@ import request from 'services/request';
 
 import thunk from 'redux-thunk';
 
+import posts from 'stores/posts/reducer';
+
 // eslint-disable-next-line no-underscore-dangle
 const reduxCompose = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const history = createBrowserHistory();
@@ -14,6 +16,7 @@ const history = createBrowserHistory();
 export default createStore(
   combineReducers({
     routing: routerReducer,
+    posts,
   }),
   reduxCompose(
     applyMiddleware(
