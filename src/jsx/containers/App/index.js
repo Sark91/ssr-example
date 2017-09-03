@@ -8,6 +8,7 @@ import Content from 'jsx/components/Content';
 
 import Posts from 'jsx/containers/Posts';
 import Albums from 'jsx/containers/Albums';
+import Todos from 'jsx/containers/Todos';
 
 import './style.scss';
 
@@ -16,7 +17,7 @@ const routes = [
   { title: 'Home', exact: true, path: '/', component: () => <p>Home</p> },
   { title: 'Posts', path: '/posts', component: Posts },
   { title: 'Albums', path: '/albums', component: Albums },
-  { title: 'Todos', path: '/todos', component: () => <span>Todos</span> },
+  { title: 'Todos', path: '/todos', component: Todos },
   { title: '404 - Not Found', path: '*', component: () => <span>404</span>, hideInMenu: true },
 ];
 
