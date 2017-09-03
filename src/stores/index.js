@@ -1,5 +1,6 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import { routerReducer, routerMiddleware } from 'react-router-redux';
+import { autoRehydrate } from 'redux-phoenix';
 import createBrowserHistory from 'history/createBrowserHistory';
 
 import clientMiddleware from 'stores/middlewares/clientMiddleware';
@@ -15,7 +16,7 @@ import todos from 'stores/todos/reducer';
 const reduxCompose = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const history = createBrowserHistory();
 
-export default createStore(
+const store = createStore(
   combineReducers({
     routing: routerReducer,
     posts,
@@ -28,8 +29,11 @@ export default createStore(
       clientMiddleware(request),
       routerMiddleware(history),
     ),
+    autoRehydrate,
   ),
 );
+
+export default store;
 
 export {
   history,

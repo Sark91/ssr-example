@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import stores, { history } from 'stores';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
@@ -21,9 +22,9 @@ const routes = [
   { title: '404 - Not Found', path: '*', component: () => <span>404</span>, hideInMenu: true },
 ];
 
-const App = () => (
+const App = ({ store }) => (
   <div className="app">
-    <Provider store={stores}>
+    <Provider store={store || stores}>{/* "|| sores" it's a fallback for tests */}
       <ConnectedRouter history={history}>
         <Container>
           <Row>
@@ -39,5 +40,13 @@ const App = () => (
     </Provider>
   </div>
 );
+
+App.propTypes = {
+  store: PropTypes.object, // eslint-disable-line react/forbid-prop-types
+};
+
+App.defaultProps = {
+  store: null,
+};
 
 export default App;

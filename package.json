@@ -33,6 +33,7 @@
     "react-router-redux": "^5.0.0-alpha.6",
     "reactstrap": "^4.8.0",
     "redux": "^3.7.2",
+    "redux-phoenix": "^1.0.3",
     "redux-thunk": "^2.2.0",
     "webpack": "^3.5.5",
     "whatwg-fetch": "^2.0.3"
