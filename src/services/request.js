@@ -30,7 +30,7 @@ requestMethods.forEach((requestMethod) => {
         }
 
         return response.text()
-          .then(result => Promise.reject(`(${response.status || no_error_code}) ${result}`));
+          .then(result => Promise.reject(`(${response.status || 'no_error_code'}) ${result}`));
       });
   };
 });
