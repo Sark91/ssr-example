@@ -14,7 +14,14 @@ import {
   setPage,
 } from 'stores/table-data/actions';
 
+import mockStore from '../_mockStore';
+import { createDataState } from 'stores/table-data/reducer';
+
 describe('table-data actions', () => {
+  afterEach(() => {
+    fetch.resetMocks();
+  });
+
   test('"getData" should call dispatch function with correct data', () => {
     const dataToDispatch = getData('mocked', 'store');
     const dispatch = jest.fn();
@@ -89,6 +96,44 @@ describe('table-data actions', () => {
       });
 
       expect(dispatch2.mock.calls[0][0].promise).toBeInstanceOf(Function);
+    });
+  });
+
+  test('"refreshData" should return promise with response object (200)', () => {
+    const mockedFetchResponse = { response: '__true__' };
+    const refData = refreshData('store', 'all');
+    const store = mockStore({
+      store :{
+        all: createDataState({ endpoint: '/posts' })
+      },
+    });
+
+    fetch.mockResponse(JSON.stringify(mockedFetchResponse), { status: 200 });
+
+    return store.dispatch(refData()).then((result) => {
+      expect(result).toMatchObject({
+        type: TABLE_DATA_GET_DATA_SUCCESS,
+        result: mockedFetchResponse,
+      });
+    });
+  });
+
+  test('"refreshData" should return promise with response object (404)', () => {
+    const mockedFetchResponse = '__MY_ERROR__';
+    const refData = refreshData('store', 'all');
+    const store = mockStore({
+      store :{
+        all: createDataState({ endpoint: '/posts' })
+      },
+    });
+
+    fetch.mockResponse(mockedFetchResponse, { status: 404 });
+
+    return store.dispatch(refData()).then((result) => {
+      expect(result).toMatchObject({
+        type: TABLE_DATA_GET_DATA_ERROR,
+        error: mockedFetchResponse,
+      });
     });
   });
 });
