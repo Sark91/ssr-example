@@ -11,7 +11,7 @@ const Todos = () => (
         title: 'Title',
         completed: {
           title: 'Is Ready',
-          cellRenderer: item => item ? 'Yes' : 'No',
+          cellRenderer: item => item ? 'Yes' : 'No', // eslint-disable-line no-confusing-arrow
         },
       }}
     />

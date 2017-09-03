@@ -34,7 +34,7 @@ const getCellValue = (model, row, item) => {
   let cellRenderer = model[item].cellRenderer;
 
   if (!cellRenderer) {
-    cellRenderer = item => item;
+    cellRenderer = itemValue => itemValue;
   }
 
   return cellRenderer(row[item]);
