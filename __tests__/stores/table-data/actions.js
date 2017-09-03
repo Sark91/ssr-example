@@ -132,7 +132,7 @@ describe('table-data actions', () => {
     return store.dispatch(refData()).then((result) => {
       expect(result).toMatchObject({
         type: TABLE_DATA_GET_DATA_ERROR,
-        error: mockedFetchResponse,
+        error: `(404) ${mockedFetchResponse}`,
       });
     });
   });
