@@ -22,7 +22,7 @@ const refreshData = (reducer, prop) => () => dispatch => dispatch(getData(reduce
 const setLimit = (reducer, prop) => _limit => (dispatch) => {
   dispatch({
     type: TABLE_DATA_SET_LIMIT,
-    payload: { _limit },
+    payload: { reducer, prop, _limit },
   });
 
   return dispatch(getData(reducer, prop));
@@ -31,7 +31,7 @@ const setLimit = (reducer, prop) => _limit => (dispatch) => {
 const setPage = (reducer, prop) => _page => (dispatch) => {
   dispatch({
     type: TABLE_DATA_SET_PAGE,
-    payload: { _page },
+    payload: { reducer, prop, _page },
   });
 
   return dispatch(getData(reducer, prop));

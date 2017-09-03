@@ -109,6 +109,7 @@ describe('table-data reducer', () => {
     expect(newState.all.query._limit).toBe(-1);
 
     newState.all.query._limit = mockedState.all.query._limit;
+    newState.all.pages = Math.ceil(100 / newState.all.query._limit);
 
     expect(mockedState).toMatchObject(newState); // check reducer changed only _limit
   });

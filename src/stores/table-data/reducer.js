@@ -22,6 +22,7 @@ import immutable from 'object-path-immutable';
  */
 const createDataState = ({ endpoint }) => ({
   endpoint,
+  pages: 9,
   query: {
     _page: 1,
     _limit: 12,
@@ -86,8 +87,19 @@ const reducer = (state, action) => {
       };
 
     case TABLE_DATA_SET_LIMIT:
-      // eslint-disable-next-line no-underscore-dangle
-      return immutable.set(state, `${action.payload.prop}.query._limit`, action.payload._limit);
+      return {
+        ...state,
+        [action.payload.prop]: {
+          ...state[[action.payload.prop]],
+          // this value is just mocked, because jsonplaceholder doesnt return pagination info
+          pages: Math.ceil(100 / action.payload._limit), // eslint-disable-line no-underscore-dangle
+          query: {
+            ...state[[action.payload.prop]].query, // eslint-disable-line no-underscore-dangle
+            _page: 1,
+            _limit: action.payload._limit, // eslint-disable-line no-underscore-dangle
+          },
+        },
+      };
 
     case TABLE_DATA_SET_PAGE:
       // eslint-disable-next-line no-underscore-dangle
