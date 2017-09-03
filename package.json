@@ -19,6 +19,7 @@
     "bootstrap": "^4.0.0-alpha.6",
     "express": "^4.15.4",
     "history": "^4.7.2",
+    "lodash": "^4.17.4",
     "object-path-immutable": "^0.5.1",
     "prop-types": "^15.5.10",
     "querystring": "^0.2.0",
