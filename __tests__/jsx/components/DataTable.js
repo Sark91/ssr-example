@@ -3,7 +3,10 @@ import { mount } from 'enzyme';
 import DataTable from 'jsx/components/DataTable';
 
 const mockedModel = {
-  id: 'Id',
+  id: {
+    title: 'Id',
+    cellRenderer: (item) => `__xD_${item}`,
+  },
   title: 'Title',
   body: 'Post'
 };
@@ -55,5 +58,12 @@ describe('<DataTable /> Compoenent', () => {
 
     expect(element.find('thead tr').children().at(1).text()).toMatch('Title')
     expect(element.find('tbody').children().at(0).children().at(1).text()).toMatch(mockedData[0].title)
+  });
+
+  test('It should use cellRenderer if available', () => {
+    const element = mountElement();
+
+    expect(element.find('thead tr').children().at(0).text()).toMatch('Id')
+    expect(element.find('tbody').children().at(0).children().at(0).text()).toMatch(`__xD_${mockedData[0].id}`)
   });
 });

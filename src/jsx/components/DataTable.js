@@ -23,6 +23,23 @@ const getHeader = model => (
   </thead>
 );
 
+/**
+ * funkction check that in model developer type a renderer function, if yes the use it
+ * @param model
+ * @param row
+ * @param item
+ * @returns {*}
+ */
+const getCellValue = (model, row, item) => {
+  let cellRenderer = model[item].cellRenderer;
+
+  if (!cellRenderer) {
+    cellRenderer = item => item;
+  }
+
+  return cellRenderer(row[item]);
+};
+
 const getBody = (model, data) => {
   const order = Object.keys(model);
 
@@ -32,7 +49,7 @@ const getBody = (model, data) => {
         <tr key={row.id}>
           {order.map(item => (
             <td key={item}>
-              {row[item]}
+              {getCellValue(model, row, item)}
             </td>
           ))}
         </tr>
