@@ -5,4 +5,4 @@ import request from 'services/request';
 
 const middlewares = [thunk, clientMiddleware(request)];
 
-export default () => configureMockStore(middlewares);
+export default configureMockStore(middlewares);
