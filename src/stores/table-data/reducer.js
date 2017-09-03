@@ -35,7 +35,13 @@ const createDataState = ({ endpoint }) => ({
  * @see how its used in 'posts' reducer
  * @param actionTable
  */
-const isTableDataActionType = actionTable => actionTable in tableDataActionTypes;
+const isTableDataActionType = (stateName, action) => {
+  if (!action || !action.payload || stateName !== action.payload.store) {
+    return false;
+  }
+
+  return action.type in tableDataActionTypes;
+};
 
 /**
  * Reducer part.
