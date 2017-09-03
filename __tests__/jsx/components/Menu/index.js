@@ -1,7 +1,6 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { mount } from 'enzyme';
 import { Menu } from 'jsx/components/Menu';
-import { spy } from 'sinon';
 
 const mountMenuElement = (hideInMenu = false, push = () => {}) => mount(
   <Menu
@@ -41,11 +40,11 @@ describe('<Menu/> Component', () => {
   });
 
   test('It should call func in history.push property', () => {
-    const callback = spy();
+    const callback = jest.fn();
     const MenuElement = mountMenuElement(false, callback).find('ul.menu').childAt(0).find('li');
 
     MenuElement.simulate('click');
 
-    expect(callback.called).toBe(true);
+    expect(callback).toHaveBeenCalled();
   });
 });
